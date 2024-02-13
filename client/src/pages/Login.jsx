@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
-function Register() {
-    const [nombre, setNombre] = useState("");
+function Login() {
     const [correo, setEmail] = useState("");
     const [contrasena, setPassword] = useState("");
     
     function handleSubmit(e) {
         e.preventDefault();
-        tipo === '' ? alert("Campo vacio") : console.log(nombre, correo, contrasena);
+        tipo === '' ? alert("Campo vacio") : console.log(correo, contrasena);
     }
     
     return (
@@ -15,9 +14,6 @@ function Register() {
             {/* <img className="avatar" src="vite.svg" alt="Logo" /> */}
             <h1>Login Here</h1>
             <form onSubmit={handleSubmit}>
-                {/* Nombre */}
-                <label htmlFor="username">Nombre: </label>
-                <input type="text" placeholder="Enter your username" value={nombre} onChange={(e) => setNombre(e.target.value)} />
                 {/* Correo */}
                 <label htmlFor="email">Correo: </label>
                 <input type="email" placeholder="Enter your email" value={correo} onChange={(e) => setEmail(e.target.value)} />
@@ -27,10 +23,10 @@ function Register() {
                 {/* Enviar el formulario */}
                 <input type="submit" value="Log In" />
                 {/* Enlaces */}
-                <a href="/login">¿Ya tienes una cuenta? Inicia sesión</a>
+                <a href="/register">¿No estás registrado?</a>
             </form>
         </div>
     )
 }
 
-export default Register;
+export default Login;
