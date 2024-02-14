@@ -2,18 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-import Menu from './pages/Menu';
+import Index from './pages/Index';
 import Register from './pages/Register';
 import Search from './pages/Search';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <div>UTS Emprende</div>
-  },
-  {
-    path: '/menu',
-    element: <Menu />
+    element: <Index />
   },
   {
     path: '/register',

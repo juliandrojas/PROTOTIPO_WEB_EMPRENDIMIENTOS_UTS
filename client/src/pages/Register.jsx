@@ -1,17 +1,36 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 function Register() {
     const [nombre, setNombre] = useState("");
     const [numero, setNumero] = useState("");
+    const [creador, setCreador] = useState("");
     const [tipoEmprendimiento, setTipoEmprendimiento] = useState("");
     const [fotoEmprendimiento, setFotoEmprendimiento] = useState(null);
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         setFotoEmprendimiento(file);
     };
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        tipoEmprendimiento === '' ? alert("Campo vacio") : console.log(nombre, numero, tipoEmprendimiento);
+        console.log(nombre, numero, creador, tipoEmprendimiento);
+        //tipoEmprendimiento === '' ? alert("Campo vacio") : console.log(nombre, numero, creador, tipoEmprendimiento);
+        //* Creamos un objeto FormData para enviar datos del formulario
+        const formData = new FormData();
+        formData.append('nombre', nombre);
+        formData.append('numero', numero);
+        formData.append('creador', creador);
+        formData.append('tipoEmprendimiento', tipoEmprendimiento);
+        console.log(formData);
+        //formData.append('fotoEmprendimiento', fotoEmprendimiento);
+        try {
+            //* Realizamos la solicitud POST a la API usando Axios
+            const response = await axios.post('http://localhost:3000/api/emprendimientos/crear', formData);
+            //! Manejamos la respuesta de la API
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error al registrar el emprendimiento: ', error);
+        }
     }
 
     return (
@@ -22,9 +41,12 @@ function Register() {
                 {/* Nombre del emprendimiento */}
                 <label htmlFor="name">Nombre: </label>
                 <input type="text" placeholder="Ingresa el nombre de tu emprendimiento" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-                {/* Contacto de la persona */}
+                {/* Contacto del emprendimiento */}
                 <label htmlFor="contact">Contacto: </label>
                 <input type="number" placeholder="Ingresa el número de contacto" value={numero} onChange={(e) => setNumero(e.target.value)} />
+                {/* Nombre del creador */}
+                <label htmlFor="name">Nombre: </label>
+                <input type="text" placeholder="Ingresa el nombre del creador" value={creador} onChange={(e) => setCreador(e.target.value)} />
                 {/* Tipo de emprendimiento */}
                 <label htmlFor="type">Tipo de emprendimiento: </label>
                 <select id="type" value={tipoEmprendimiento} onChange={(e) => setTipoEmprendimiento(e.target.value)}>
