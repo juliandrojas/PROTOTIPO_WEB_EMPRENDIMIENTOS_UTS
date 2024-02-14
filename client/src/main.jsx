@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-import Login from './pages/Login';
+import Menu from './pages/Menu';
 import Register from './pages/Register';
+import Search from './pages/Search';
 
 const router = createBrowserRouter([
   {
@@ -11,12 +12,16 @@ const router = createBrowserRouter([
     element: <div>UTS Emprende</div>
   },
   {
-    path: '/login',
-    element: <Login />
+    path: '/menu',
+    element: <Menu />
   },
   {
     path: '/register',
     element: <Register />
+  },
+  {
+    path: '/search',
+    element: <Search />
   }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
