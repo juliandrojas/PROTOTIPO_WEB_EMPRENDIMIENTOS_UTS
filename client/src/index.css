@@ -57,3 +57,20 @@ body {
   text-align: center;
   color: #888;
 }
+.boton-submit {
+  background-color: #b80f22;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  text-decoration: none; /* Elimina el subrayado */
+}
+
+.boton-submit:hover {
+  background-color: #a00c1f;
+}
