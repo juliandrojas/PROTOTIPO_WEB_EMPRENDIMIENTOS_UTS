@@ -1,8 +1,10 @@
+import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 import indexRoutes from './routes/index.routes.js';
 const app = express();
 app.use(express.json());
+app.use(bodyParser.json());
 app.use(cors({
     origin: 'http://localhost:5173', // Cambia esto según el origen de tu aplicación React
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
