@@ -6,9 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'http://localhost:5173', // Cambia esto según el origen de tu aplicación React
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
-    allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
+    origin: '*'
   }));
   
 //Routes
