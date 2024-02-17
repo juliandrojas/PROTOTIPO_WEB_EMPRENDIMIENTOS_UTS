@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './index.css';
+//import './index.css';
 import Index from './pages/Index';
 import Register from './pages/Register';
 import Search from './pages/Search';
