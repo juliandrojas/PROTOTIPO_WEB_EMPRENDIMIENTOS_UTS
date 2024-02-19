@@ -41,8 +41,8 @@ function Index() {
                                     <div className="card h-100">
                                         <div className="card-body">
                                             <h5 className="card-title">{item.nombre}</h5>
-                                            <p className="card-text">Número: {item.numero}</p>
                                             <p className="card-text">Creador: {item.creador}</p>
+                                            <p className="card-text">Creador: {item.contacto}</p>
                                             <p className="card-text">Tipo: {item.tipo}</p>
                                         </div>
                                     </div>

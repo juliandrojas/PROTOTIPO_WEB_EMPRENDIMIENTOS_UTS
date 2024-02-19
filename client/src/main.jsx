@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 //import './index.css';
 import Index from './pages/Index';
 import Register from './pages/Register';
+import Results from './pages/Results';
 import Search from './pages/Search';
 
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: '/search',
     element: <Search />
+  },
+  {
+    path: '/results',
+    element: <Results />
   }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(

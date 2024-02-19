@@ -1,22 +1,24 @@
 import { pool } from '../db.js';
 export const crearEmprendimiento = async (req, res) => {
     try {
-        //!Destructuramos el objeto req.body
+        //! Destructuramos el objeto req.body
         const { nombre, numero, creador, tipo } = req.body;
-        const [rows] = await pool.query('INSERT INTO emprendimientos (nombre, numero, creador, tipo) VALUES (?, ?, ?, ?)', [nombre, numero, creador, tipo]);
-        console.log({ rows });
+        const [result] = await pool.query('INSERT INTO emprendimientos (nombre, contacto, creador, tipo) VALUES (?, ?, ?, ?)', [nombre, numero, creador, tipo]);
+        console.log({ result });
         //!Devolvemos los datos junto con el ID
-        res.send({
-            id: rows.insertId,
+        res.json({
+            id: result.insertId,
             nombre,
-            numero,
+            contacto: numero,
             creador,
             tipo
         });
     } catch (error) {
-        return res.status(500).json({ error })
+        console.error("Error al insertar los datos: " + error.message);
+        return res.status(500).json({ error: "Error al insertar los datos" });
     }
 };
+
 export const obtenerEmprendimientos = async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM emprendimientos');
@@ -35,6 +37,18 @@ export const obtenerEmprendimientoId = async (req, res) => {
         return res.status(500).json({ error })
     }
 }
+// Para obtener un emprendimiento por su nombre
+export const obtenerEmprendimientoPorNombre = async (req, res) => {
+    try {
+        const { nombre } = req.params; // Usamos req.params en lugar de req.query
+        const [rows] = await pool.query('SELECT * FROM emprendimientos WHERE nombre = ?', [nombre]);
+        // Si no se encuentra el emprendimiento
+        rows.length <= 0 ? res.status(404).json({ message: 'Emprendimiento no encontrado' }) : res.json(rows[0]);
+    } catch (error) {
+        return res.status(500).json({ error })
+    }
+}
+
 export const actualizarEmprendimiento = async (req, res) => {
     try {
         // TODO: Extraemos el id

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-02-2024 a las 04:05:57
+-- Tiempo de generación: 17-02-2024 a las 16:36:25
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,7 +41,6 @@ CREATE TABLE `categorias` (
 CREATE TABLE `emprendimientos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL,
-  `descripcion` text DEFAULT NULL,
   `creador` varchar(100) DEFAULT NULL,
   `contacto` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;

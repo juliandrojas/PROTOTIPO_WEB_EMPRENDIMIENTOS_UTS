@@ -2,9 +2,25 @@ import React, { useState } from 'react';
 
 function Search() {
     const [nombre, setNombre] = useState("");
-    const handleSubmit = (e) => {
-        console.log("Hola Mundo")
-    }
+    const [emprendimientoEncontrado, setEmprendimientoEncontrado] = useState(null);
+    const [error, setError] = useState(null);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`/api/emprendimientos/?nombre=${nombre}`);
+            if (!response.ok) {
+                throw new Error('Emprendimiento no encontrado');
+            }
+            const data = await response.json();
+            setEmprendimientoEncontrado(data);
+            setError(null);
+        } catch (error) {
+            setError(error.message);
+            setEmprendimientoEncontrado(null);
+        }
+    };
+
     return (
         <>
             <div className="container d-flex align-items-center justify-content-center vh-100">
@@ -24,11 +40,21 @@ function Search() {
                                 <a href="/register" className="btn btn-secondary w-100">Registrar otro emprendimiento</a>
                             </div>
                         </form>
+                        {emprendimientoEncontrado && (
+                            <div className="alert alert-success" role="alert">
+                                Emprendimiento encontrado: {emprendimientoEncontrado.nombre}
+                            </div>
+                        )}
+                        {error && (
+                            <div className="alert alert-danger" role="alert">
+                                {error}
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }
 
-export default Search
+export default Search;

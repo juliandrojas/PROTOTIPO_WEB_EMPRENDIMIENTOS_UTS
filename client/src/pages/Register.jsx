@@ -6,7 +6,7 @@ function Register() {
     const [numero, setNumero] = useState("");
     const [creador, setCreador] = useState("");
     const [tipo, setTipo] = useState("");
-    const [fotoEmprendimiento, setFotoEmprendimiento] = useState(null);
+    //const [fotoEmprendimiento, setFotoEmprendimiento] = useState(null);
     /*const handleFileChange = (e) => {
         const file = e.target.files[0];
         setFotoEmprendimiento(file);
@@ -15,6 +15,7 @@ function Register() {
         e.preventDefault();
         //! Destructuramos el arreglo con los datos
         const datos = { nombre, numero, creador, tipo };
+        console.log(datos);
         //* Enviamos los datos
         try {
             const response = await axios.post(
@@ -22,7 +23,7 @@ function Register() {
                 datos
             );
             console.log(response);
-            alert("Emprendimiento Registrado0")
+            alert("Emprendimiento Registrado")
         } catch (error) {
             console.error("Error al insertar los datos: " + error);
         }

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { actualizarEmprendimiento, crearEmprendimiento, obtenerEmprendimientoId, obtenerEmprendimientos } from '../controllers/index.controller.js';
+import { actualizarEmprendimiento, crearEmprendimiento, obtenerEmprendimientoId, obtenerEmprendimientoPorNombre, obtenerEmprendimientos } from '../controllers/index.controller.js';
 const router = Router();
 /*app.get('/ping', async (req, res) => {
     const [ result ] = await pool.query("SELECT 'PONG' AS RESULT")
@@ -8,6 +8,7 @@ const router = Router();
 router.get('/emprendimientos', obtenerEmprendimientos);
 router.post('/emprendimientos/crear', crearEmprendimiento);
 router.get('/emprendimientos/:id', obtenerEmprendimientoId);
+router.get('/emprendimientos/:nombre', obtenerEmprendimientoPorNombre);
 router.patch('/emprendimientos/:id', actualizarEmprendimiento);
 /*
 router.post('/crear', crearEmprendimiento);
